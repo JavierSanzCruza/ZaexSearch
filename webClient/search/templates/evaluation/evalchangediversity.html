@@ -1,0 +1,16 @@
+<h4>ILD = {{ ildDiversity }}</h4>
+<ul class="searchList">
+    {% for lnk in diversityList %}
+    <li class="searchList">
+        <a draggable="false" id="search{{ lnk.rank }}" class="searchResult" target="_blank" href="{{ lnk.url }}">
+            <div class="searchButton">
+                <p class="siteName">{{ lnk.title }}</p>
+                <p class="siteURL">{{ lnk.url }}</p>
+                <p class="siteDesc">{{ lnk.descr }}</p>
+                <p hidden class="siteRank">{{ lnk.rank }}</p>
+                <p hidden class="siteQuery">{{ query }}</p>
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

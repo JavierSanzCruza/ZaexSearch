@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<ul class="searchList">
+    {% for lnk, sources in linkList %}
+    <li class="searchList">
+        <a draggable="false" id="search{{ lnk.rank }}" class="searchResult" target="_blank" href="{{ lnk.url }}">
+            <div class="searchButton">
+                <p class="siteName">{{ lnk.title }}</p>
+                <p class="siteURL">{{ lnk.url }}</p>
+                <p class="siteDesc">{{ lnk.snippet }}</p>
+                <p hidden class="siteRank">{{ lnk.rank }}</p>
+                <p hidden class="siteQuery">{{ query }}</p>
+                {%  for source in sources %}
+                    {% if source == 4 %}
+                        <img class="source-images" src="{% static 'search/images/carrot2.png'%}">
+                    {% elif source == 2 %}
+                        <img class="source-images" src="{% static 'search/images/bing.png'%}">
+                    {%  elif source == 1 %}
+                        <img class="source-images" src="{% static 'search/images/faroo.png'%}">
+                    {% else %}
+                        <img class="source-images" src="{% static 'search/images/google.jpeg'%}">
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </a>
+    </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,16 @@
+<h3>Saved results:</h3>
+<ul class=searchList>
+{% for lnk in linkList%}
+    <li class=searchList>
+		<a draggable="true" id="saved{{ lnk.query }}{{ lnk.rank }}" class="searchResult" ondragstart="dragDelete(event)" target="_blank" href="{{ lnk.url }}">
+            <div id="savedDiv{{ lnk.rank }}" draggable="true" ondragstart="dragSave(event)" class="searchButton">
+                <p class="siteName">{{ lnk.title }}</p>
+                <p class="siteURL">{{ lnk.url }}</p>
+                <p class="siteDesc">{{ lnk.descr }}</p>
+                <p hidden class="siteRank">{{ lnk.rank }}</p>
+                <p hidden class="siteQuery">{{ lnk.query }}</p>
+            </div>
+        </a>
+    </li>
+{% endfor %}
+</ul>

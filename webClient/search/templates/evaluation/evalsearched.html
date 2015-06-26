@@ -1,0 +1,16 @@
+<h4>Resultados de la búsqueda:</h4>
+    <ul class=searchList>
+        {% for lnk in linkList%}
+        <li class=searchList>
+            <a draggable = "true" id="search{{ lnk.rank }}" class=searchResult ondragstart="dragSave(event)" onClick="onResultClick('http://{{ serverName }}:{{ serverPort }}/evaluation/clicked', '{{ lnk.url }}', '{{query}}', {{ lnk.rank }})" href="#">
+                <div class={% if lnk.saved %} {{ "searchButtonSaved" }} {%  else %} {{ "searchButton" }} {% endif %}>
+                    <p class=siteName>{{ lnk.title }}</p>
+                    <p class=siteURL>{{ lnk.url }}</p>
+                    <p class=siteDesc>{{ lnk.descr }}</p>
+                    <p hidden class=siteRank>{{ lnk.rank }}</p>
+                    <p hidden class=siteQuery>{{ query }}</p>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>

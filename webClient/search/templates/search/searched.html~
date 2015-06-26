@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<div id="searchid" style="display:none;">{{ searchid }}</div>
+<ul class="searchList">
+    {% for lnk, sources in linkList %}
+    <li class="searchList">
+        <a draggable="true" id="search{{ lnk.rank }}" class="searchResult" ondragstart="dragSave(event)" onclick="onResultClick('http://{{ serverName }}:{{ serverPort }}/clicked', '{{ lnk.url }}', '{{query}}', {{ lnk.rank }})" href="#">
+            <div id="searchDiv{{ lnk.rank }}" draggable="true" ondragstart="dragSave(event)" class={% if lnk.saved %} {{ "searchButtonSaved" }} {%  else %} {{ "searchButton" }} {% endif %}>
+                <p class="siteName">{{ lnk.title }}</p>
+                <p class="siteURL">{{ lnk.url }}</p>
+                <p class="siteDesc">{{ lnk.descr }}</p>
+                <p hidden class="siteRank">{{ lnk.rank }}</p>
+                <p hidden class="siteQuery">{{ query }}</p>
+                {%  for source in sources %}
+                    {% if source == 4 %}
+                        <img class="source-images" src="{% static 'search/images/carrot2.png'%}">
+                    {% elif source == 2 %}
+                        <img class="source-images" src="{% static 'search/images/bing.png'%}">
+                    {%  elif source == 1 %}
+                        <img class="source-images" src="{% static 'search/images/faroo.png'%}">
+                    {% else %}
+                        <img class="source-images" src="{% static 'search/images/carrot2.png'%}">
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

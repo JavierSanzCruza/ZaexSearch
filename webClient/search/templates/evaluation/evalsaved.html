@@ -1,0 +1,14 @@
+<h4>Resultados guardados</h4>
+    <ul class=searchList>
+        {% for lnk in linkList%}
+        <li class=searchList>
+            <a id="saved{{ lnk.url }}" class=searchResult onClick="onResultClick('http://{{ serverName }}:{{ serverPort }}/evaluation/clicked', '{{ lnk.url }}', '{{lnk.query}}', {{ lnk.rank }})" ondragstart="dragDelete(event)" href="#">
+                <div class=searchButton>
+                    <p class=siteName>{{ lnk.title }}</p>
+                    <p class=siteURL>{{ lnk.url }}</p>
+                    <p class=siteDesc>{{ lnk.descr }}</p>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>

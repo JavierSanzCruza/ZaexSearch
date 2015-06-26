@@ -1,0 +1,14 @@
+<h3>Clicked results:</h3>
+    <ul class=searchList>
+        {% for lnk in clickedList%}
+        <li class=searchList>
+            <a draggable="true" id="clicked{{ lnk.rank }}" class="searchResult" ondragstart="dragSave(event)" target="_blank" href="{{ lnk.url }}">
+                <div class="searchButton">
+                    <p class="siteName">{{ lnk.title }}</p>
+                    <p class="siteURL">{{ lnk.url }}</p>
+                    <p class="siteDesc">{{ lnk.descr }}</p>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
